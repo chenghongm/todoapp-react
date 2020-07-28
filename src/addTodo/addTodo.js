@@ -1,7 +1,13 @@
 import React from 'react';
 
 class AddTodo extends React.Component{
-    
+
+    constructor(){
+        super();
+        this.state = {
+            todo: ''
+        };
+    }
 
     render(){
         return(<div className='addTodoContainer'>
@@ -15,12 +21,12 @@ class AddTodo extends React.Component{
     }
 
     updateInput = (e) =>{
-        console.log(e);
+        this.setState({todo: e.target.value })
     }
 
     submitTodo = (e) => {
         e.preventDefault();
-        console.log("submit");
+        this.props.addTodoFn(this.state.todo);
     }
 
 }

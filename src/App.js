@@ -16,7 +16,7 @@ class App extends React.Component{
   render(){
     return (<div>
       {
-        <AddTodo></AddTodo>
+        <AddTodo addTodoFn={this.addTodo}></AddTodo>
       }
       </div>);
 
@@ -31,6 +31,8 @@ componentDidMount = () =>{
     console.log('No todos');
   }
 }
+
+addTodo = (todo) => this.setState({todos:[...this.state.todos,todo]})
 
 }
 
