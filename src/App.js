@@ -15,7 +15,7 @@ class App extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className='App'>
       
         <AddTodo addTodoFn={this.addTodo}></AddTodo>
         <TodoList updateTodoFn = {this.updateTodo} todos={this.state.todos}></TodoList>
@@ -46,7 +46,7 @@ addTodo = async(todo) => {
 
       }
 
-    updateTodo = (todo) => {
+    updateTodo = async (todo) => {
      const newTodos =  this.state.todos.map(_todo => {
          if(todo === _todo)
           return {
@@ -56,8 +56,9 @@ addTodo = async(todo) => {
           else
             return _todo
       });
-      console.log(newTodos);
-      this.setState({todos:newTodos});
+      
+      await this.setState({todos:newTodos});
+      localStorage.setItem('todos', JSON.stringify(this.state.todos))
     }
 
 }
