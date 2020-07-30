@@ -14,10 +14,12 @@ class App extends React.Component{
   }
 
   render(){
-    return (<div>
-      {
+    return (
+      <div>
+      
         <AddTodo addTodoFn={this.addTodo}></AddTodo>
-      }
+        <TodoList todos={this.state.todos}></TodoList>
+      
       </div>);
 
   }
@@ -32,8 +34,13 @@ componentDidMount = () =>{
   }
 }
 
-addTodo = (todo) => this.setState({todos:[...this.state.todos,todo]})
+addTodo = async(todo) => { 
+  
+       await this.setState({todos:[...this.state.todos,todo]});
+      localStorage.setItem('todos',JSON.stringify(this.state.todos));
+      console.log(localStorage.getItem('todos'));
 
+      }
 }
 
 

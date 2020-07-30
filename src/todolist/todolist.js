@@ -4,7 +4,18 @@ class TodoList extends React.Component{
 
 
     render(){
-        return(<div>Hello from the todoList!</div>)
+        const {todos} = this.props;
+        return(
+        <div className='todoListContainer'>
+            {
+                todos.map((_todo, _index)=> {
+                    return(
+                        <div key={_index}> {_todo}</div>
+                    )
+                })
+            }
+            
+        </div>)
     }
 
 }
