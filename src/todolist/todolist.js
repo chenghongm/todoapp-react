@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoItem from '../todoitem/todoitem';
 
 class TodoList extends React.Component{
 
@@ -10,12 +11,16 @@ class TodoList extends React.Component{
             {
                 todos.map((_todo, _index)=> {
                     return(
-                        <div key={_index}> {_todo}</div>
+                        <TodoItem updateTodoFn={this.updateTodo} key={_index} todo= {_todo}></TodoItem>
                     )
                 })
             }
             
         </div>)
+    }
+
+    updateTodo = (todo) => {
+        this.props.updateTodoFn(todo);
     }
 
 }
